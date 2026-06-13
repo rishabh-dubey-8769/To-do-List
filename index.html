@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaskFlow Pro</title>
+
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="blob b1"></div>
+<div class="blob b2"></div>
+<div class="blob b3"></div>
+
+<nav class="navbar">
+    <div class="logo">
+        <i class="fa-solid fa-list-check"></i>
+        <span>TaskFlow Pro</span>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#tasks">Tasks</a></li>
+        <li><a href="#calendar">Calendar</a></li>
+        <li><a href="#pomodoro">Pomodoro</a></li>
+        <li><a href="#notes">Notes</a></li>
+        <li><a href="#analytics">Analytics</a></li>
+        <li><a href="#settings">Settings</a></li>
+    </ul>
+
+    <button id="themeBtn" aria-label="Toggle theme">
+        <i class="fa-solid fa-moon"></i>
+    </button>
+</nav>
+
+<section id="hero" class="hero">
+    <div class="hero-content">
+        <h1>Manage Tasks. Build Habits. Achieve Goals.</h1>
+        <p>
+            A modern productivity dashboard featuring task management,
+            notes, analytics, Pomodoro focus sessions, calendar planning,
+            dark mode, and more.
+        </p>
+
+        <div class="hero-buttons">
+            <button class="primary-btn" aria-label="Get started">Get Started</button>
+            <button class="secondary-btn" aria-label="Explore features">Explore Features</button>
+        </div>
+    </div>
+</section>
+
+<section id="dashboard" class="section">
+    <h2>Dashboard Overview</h2>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h3 id="totalTasks">0</h3>
+            <p>Total Tasks</p>
+        </div>
+
+        <div class="stat-card">
+            <h3 id="completedTasks">0</h3>
+            <p>Completed</p>
+        </div>
+
+        <div class="stat-card">
+            <h3 id="pendingTasks">0</h3>
+            <p>Pending</p>
+        </div>
+
+        <div class="stat-card">
+            <h3 id="productivityScore">0%</h3>
+            <p>Productivity Score</p>
+        </div>
+    </div>
+
+    <div class="progress-wrapper">
+        <div class="progress-bar">
+            <div id="progress"></div>
+        </div>
+    </div>
+</section>
+
+<section id="tasks" class="section">
+    <h2>Task Manager</h2>
+
+    <div class="task-controls">
+        <input type="text" id="taskInput" placeholder="Enter task">
+
+        <select id="priority" aria-label="Select task priority">
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+        </select>
+
+        <input type="date" id="dueDate" aria-label="Select due date">
+
+        <button id="addTask" aria-label="Add task">Add Task</button>
+    </div>
+
+    <div class="search-filter">
+        <input type="text" id="searchTask" placeholder="Search tasks" aria-label="Search tasks">
+
+        <select id="filterTask" aria-label="Filter tasks">
+            <option value="all">All</option>
+            <option value="completed">Completed</option>
+            <option value="pending">Pending</option>
+        </select>
+    </div>
+
+    <ul id="taskList"></ul>
+</section>
+
+<section id="calendar" class="section">
+    <h2>Calendar Planner</h2>
+
+    <div class="calendar-header">
+        <button id="prevMonth">◀</button>
+        <h3 id="monthYear">Month Year</h3>
+        <button id="nextMonth">▶</button>
+    </div>
+
+    <div id="calendarGrid"></div>
+</section>
+
+<section id="pomodoro" class="section">
+    <h2>Pomodoro Focus Timer</h2>
+
+    <div class="timer-box">
+        <h1 id="timerDisplay">25:00</h1>
+
+        <button id="startTimer">Start</button>
+        <button id="pauseTimer">Pause</button>
+        <button id="resetTimer">Reset</button>
+
+        <p>Completed Sessions: <span id="sessionCount">0</span></p>
+    </div>
+</section>
+
+<section id="notes" class="section">
+    <h2>Quick Notes</h2>
+
+    <textarea id="notesArea" rows="10"
+        placeholder="Write notes here..."></textarea>
+
+    <button id="saveNotes">Save Notes</button>
+</section>
+
+<section id="analytics" class="section">
+    <h2>Analytics</h2>
+
+    <div class="chart-container">
+        <canvas id="taskChart"></canvas>
+    </div>
+</section>
+
+<section id="settings" class="section">
+    <h2>Settings</h2>
+
+    <div class="settings-grid">
+        <button id="exportTasks" aria-label="Export tasks">
+            <i class="fa-solid fa-download"></i> Export Tasks
+        </button>
+        <button id="clearData" aria-label="Clear data">
+            <i class="fa-solid fa-trash"></i> Clear Data
+        </button>
+        <input type="file" id="importTasks" aria-label="Import tasks">
+    </div>
+</section>
+
+<section id="faq" class="section">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+        <h3>Is data stored permanently?</h3>
+        <p>Data is stored in browser localStorage.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3>Does this require a backend?</h3>
+        <p>No. The entire application works using frontend technologies only.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3>Can I export my tasks?</h3>
+        <p>Yes. Tasks can be exported as JSON files.</p>
+    </div>
+</section>
+
+<section id="contact" class="section">
+    <h2>Contact Us</h2>
+
+    <form class="contact-form">
+        <input type="text" placeholder="Your Name">
+        <input type="email" placeholder="Your Email">
+        <textarea rows="5" placeholder="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+
+<footer>
+    <div class="footer-links">
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Support</a>
+    </div>
+
+    <p>© 2026 TaskFlow Pro. All Rights Reserved.</p>
+</footer>
+
+<div id="toast"></div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
